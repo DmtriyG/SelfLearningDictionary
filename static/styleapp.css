@@ -1,0 +1,298 @@
+body {
+    margin: 0;
+    font-family: 'Unbounded-Regular';
+    background-color: black;
+    height: 90vh;
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-image: url('/static/backgrounds/background2.jpg');
+  background-color: grey;
+  background-size: cover;
+}
+
+@font-face {
+    font-family: "Unbounded-Regular";
+    src: url("/static/fonts/Unbounded-Regular.ttf");
+}
+@font-face {
+    font-family: "Unbounded-SemiBold";
+    src: url("/static/fonts/Unbounded-SemiBold.ttf");
+}
+@font-face {
+    font-family: "Unbounded-Light";
+    src: url("/static/fonts/Unbounded-Light.ttf");
+}
+@font-face {
+    font-family: "Unbounded-Medium";
+    src: url("/static/fonts/Unbounded-Medium.ttf");
+}
+
+header {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 80px;
+}
+
+nav {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    font-size: 20px;
+    border: 1px transparent;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+nav::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 40px; 
+    padding: 1px; 
+    background: linear-gradient(135deg, #e0aaff, rgba(255, 255, 255, 0), #e0aaff  ); 
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    pointer-events: none; 
+}
+
+nav a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    padding-right: 10px; 
+}
+
+
+nav a img {
+    height: 28px;
+    margin-right: 8px;
+    opacity: 90%;
+}
+
+nav a span {
+    line-height: 20px; 
+    margin-left: 0px;
+    opacity: 90%;
+}
+nav a:hover {
+    background-color: #e0aaff79;
+    border-radius: 40px;
+}
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    gap: 40px;
+}
+
+.sidebar {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin-top: 120px;
+    margin-bottom: 120px;
+    border-radius: 40px;
+    padding-inline: 25px;
+    border: 1px transparent;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+.sidebar::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 40px; 
+    padding: 1px; 
+    background: linear-gradient(135deg, #e0aaff, rgba(255, 255, 255, 0), #e0aaff  ); 
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    pointer-events: none; 
+}
+.sidebar label {
+    text-align: center;
+    padding-top: 10px;
+    color: white;
+    font-family: "Unbounded-Regular";
+    opacity: 60%;
+}
+
+.model-selector {
+    display: flex;
+    flex-direction: column;
+}
+
+.model-button {
+    border: none;
+    background-color: none;
+    color: white;
+    cursor: pointer;
+    font-family: "Unbounded-Medium";
+    font-size: 30px;
+    padding: 5px;
+    text-align: center;
+    justify-content: center;
+}
+.model-button.active {
+    color: #C77DFF;
+    text-shadow: 0px 0px 30px #E0AAFF;
+    transition: 0.3s;
+}
+
+.model-button:hover {
+    color: #C77DFF;
+    background: none;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    justify-content: center;
+}
+
+.input-row {
+    display: flex;
+    gap: 40px;
+}
+
+.input-group {
+    background-color: rgba(255, 255, 255, 0.1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    justify-content: center;
+    flex: 1;
+    width: 350px;
+    border-radius: 40px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.input-group::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 40px; 
+    padding: 1px; 
+    background: linear-gradient(135deg, #e0aaff, rgba(255, 255, 255, 0), #e0aaff  ); 
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    pointer-events: none; 
+}
+
+.input-group label {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: white;
+    opacity: 60%;
+}
+
+.input-group input[type="text"] {
+    background-color: rgba(255, 255, 255, 0.14);
+    width: 90%;
+    padding: 10px;
+    border-radius: 40px;
+    border: none;
+    font-size: 20px;
+    font-family: "Unbounded-Light";
+    color: white;
+    margin-bottom: 10px;
+    text-align: center;
+
+}
+.input-group input[type="number"] {
+    background-color: rgba(255, 255, 255, 0.14);
+    width: 90%;
+    padding: 10px;
+    border-radius: 40px;
+    border: none;
+    font-size: 20px;
+    font-family: "Unbounded-Light";
+    color: white;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+button {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    border: none;
+    color:#C77DFF;
+    cursor: pointer;
+    font-size: 28px;
+    background: none;
+    font-family: "Unbounded-Medium";
+    transition: 0.3s;
+    justify-content: center;
+}
+
+button img {
+    margin-right: 2px;
+    width: 42px;
+    height: 42px;
+}
+
+button:hover {
+    text-shadow: 0px 0px 30px #E0AAFF;
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+}

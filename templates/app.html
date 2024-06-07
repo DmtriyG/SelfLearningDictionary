@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приложение</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styleapp.css') }}">
+</head>
+<body>
+    <div class = "background fade-in"></div>
+    <header>
+        <nav>
+            <a href="{{ url_for('mainPage') }}"><img src="{{ url_for('static', filename='mainPage.svg') }}" alt="Главная"> <span> Главная </span></a>
+            <a href="{{ url_for('appPage') }}"><img src="{{ url_for('static', filename='appPage.svg') }}" alt="Приложение"> <span> Приложение </span></a>
+            <a href="{{ url_for('dictionaryPage') }}"><img src="{{ url_for('static', filename='dictionaryPage.svg') }}" alt="Словарь"> <span> Словарь </span> </a>
+        </nav>
+    </header>
+    <main class = "fade-in">  
+        <form method="post">
+            <div class = "sidebar">
+                <label>LLM</label>
+                <div class="model-selector">
+                    <button type="button" class="model-button" id="btn-GPT" onclick="selectModel('GPT')">GPT</button>
+                    <button type="button" class="model-button" id="btn-Llama" onclick="selectModel('Llama')">Llama</button>
+                    <button type="button" class="model-button" id="btn-Gemini" onclick="selectModel('Gemini')">Gemini</button>
+                    <button type="button" class="model-button" id="btn-Claude" onclick="selectModel('Claude')">Claude</button>
+                </div>
+                <input type="hidden" name="model" id="selectedModel">
+            </div>
+            <div class = "content">
+                <div class = "input-row">
+                    <div class = "input-group">
+                        <label> VK </label>
+                        <input type="text" name="dictionary_key" placeholder="Ключ">
+                        <input type="text" name="vk_post" placeholder="Ссылка на пост">
+                        <button type="submit" name="action" value="vk_post">
+                            <img src="{{ url_for('static', filename='generateKeywords.svg') }}" alt="Start">
+                            Сгенерировать
+                        </button>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>YouTube</label>
+                        <input type="text" name="dictionary_key1" placeholder="Ключ">
+                        <input type="text" name="youtube_video" placeholder="Ссылка на видео">
+                        <button type="submit" name="action" value="youtube_video">
+                            <img src="{{ url_for('static', filename='generateKeywords.svg') }}" alt="Start">
+                            Сгенерировать
+                        </button>
+                    </div>
+                </div>
+                <div class="input-row">
+                    <div class="input-group">
+                        <label>VK</label>
+                        <input type="text" name="dictionary_key2" placeholder="Ключ">
+                        <input type="text" name="vk_search" placeholder="Поисковый запрос">
+                        <button type="submit" name="action" value="vk_search">
+                            <img src="{{ url_for('static', filename='generateKeywords.svg') }}" alt="Start">
+                            Сгенерировать
+                        </button>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Google</label>
+                        <input type="text" name="dictionary_key3" placeholder="Ключ">
+                        <input type="text" name="google_search" placeholder="Поисковый запрос">
+                        <input type="number" name="iterations" placeholder="Число итераций">
+                        <button type="submit" name="action" value="google_search">
+                            <img src="{{ url_for('static', filename='generateKeywords.svg') }}" alt="Start">
+                            Сгенерировать
+                        </button>                     
+                    </div>
+                </div>
+                
+            </div>
+        </form>
+    </main>
+    <script>
+        function selectModel(model) {
+            document.getElementById('selectedModel').value = model;
+            const buttons = document.querySelectorAll('.model-button');
+            buttons.forEach(button => button.classList.remove('active'));
+            document.getElementById('btn-' + model).classList.add('active');
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(element => {
+                setTimeout(() => {
+                    element.classList.add('visible');
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Словарь</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styledictionary.css') }}">
+</head>
+<body>
+    <div class = "background fade-in"></div>
+    <header>
+        <nav>
+            <a href="{{ url_for('mainPage') }}"><img src="{{ url_for('static', filename='mainPage.svg') }}" alt="Главная"> <span> Главная </span></a>
+            <a href="{{ url_for('appPage') }}"><img src="{{ url_for('static', filename='appPage.svg') }}" alt="Приложение"> <span> Приложение </span></a>
+            <a href="{{ url_for('dictionaryPage') }}"><img src="{{ url_for('static', filename='dictionaryPage.svg') }}" alt="Словарь"> <span> Словарь </span> </a>
+        </nav>
+    </header>
+    <main class="fade-in">
+        {% if data %}
+    {% for key, variables in data.items() %}
+      <div class="section">
+        <div class="key">{{ key }}</div>
+        <div class="variables">
+          {% for variable in variables %}
+            <span class="variable">{{ variable }}
+              <button class="delete-btn" data-key="{{ key }}" data-variable="{{ variable }}">
+                <img src="{{ url_for('static', filename='deleteValue.svg') }}" alt="Удалить">
+              </button>
+            </span>
+          {% endfor %}
+        </div>
+        <br>
+      </div>
+    {% endfor %}
+  {% else %}
+    <div class="empty">Словарь пуст</div>
+  {% endif %}
+    </main>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const elements = document.querySelectorAll('.fade-in');
+        elements.forEach(element => {
+            setTimeout(() => {
+                element.classList.add('visible');
+            }, 100);
+        });
+        const deleteButtons = document.querySelectorAll('.delete-btn');
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const key = this.getAttribute('data-key');
+                const variable = this.getAttribute('data-variable');
+
+                fetch("{{ url_for('deleteVariable') }}", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        key: key,
+                        variable: variable,
+                    })
+                }).then(response => response.json()).then(data => {
+                    if (data.success) {
+                        location.reload();
+                    } else {
+                        alert('Не удалось удалить переменную');
+                    }
+                });
+            });
+        });
+    });
+    </script>
+</body>
+</html>

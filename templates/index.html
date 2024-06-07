@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class = "background fade-in"></div>
+    <header>
+        <nav>
+            <a href="{{ url_for('mainPage') }}"><img src="{{ url_for('static', filename='mainPage.svg') }}" alt="Главная"> <span> Главная </span></a>
+            <a href="{{ url_for('appPage') }}"><img src="{{ url_for('static', filename='appPage.svg') }}" alt="Приложение"> <span> Приложение </span></a>
+            <a href="{{ url_for('dictionaryPage') }}"><img src="{{ url_for('static', filename='dictionaryPage.svg') }}" alt="Словарь"> <span> Словарь </span> </a>
+        </nav>
+    </header>
+    <main class = "fade-in">
+        <h1> <span class = "rowone"> Самообучающийся </span>
+            <span class = "rowtwo"> словарь </span>
+    </h1>
+    </main>
+    <div class = "button fade-in"> 
+        <a href="{{ url_for('appPage') }}"><img src="{{ url_for('static', filename='startApp.svg') }}" alt="Начать"> <span> Начать </span></a>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(element => {
+                setTimeout(() => {
+                    element.classList.add('visible');
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

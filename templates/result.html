@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результат</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styleresult.css') }}">
+</head>
+<body>
+    <div class = "background fade-in"></div>
+    <header>
+        <nav>
+            <a href="{{ url_for('mainPage') }}"><img src="{{ url_for('static', filename='mainPage.svg') }}" alt="Главная"> <span> Главная </span></a>
+            <a href="{{ url_for('appPage') }}"><img src="{{ url_for('static', filename='appPage.svg') }}" alt="Приложение"> <span> Приложение </span></a>
+            <a href="{{ url_for('dictionaryPage') }}"><img src="{{ url_for('static', filename='dictionaryPage.svg') }}" alt="Словарь"> <span> Словарь </span> </a>
+        </nav>
+    </header>
+    <div class="section">
+        <div class="key">{{ key }}</div>
+        <div class="variables">
+            {% for variable in data %}
+            <span class="variable">{{ variable }}</span>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+</html>

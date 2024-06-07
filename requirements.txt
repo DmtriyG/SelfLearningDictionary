@@ -1,0 +1,9 @@
+llama-cpp-python
+googlesearch-python
+beautifulsoup4
+vk-api
+google-api-python-client
+openai
+google-generativeai
+anthropic
+Flask
